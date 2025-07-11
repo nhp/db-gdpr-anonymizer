@@ -1,0 +1,255 @@
+# Example configuration for anonymizing a Magento 2 database
+
+database:
+  host: localhost
+  port: 3306
+  user: magento
+  password: magento
+  name: magento
+  driver: mysql
+
+tables:
+  # Customer data
+  customer_entity:
+    primary_key: "entity_id"
+    columns:
+      email:
+        type: faker.email
+      firstname:
+        type: faker.firstname
+      lastname:
+        type: faker.lastname
+      password_hash:
+        type: faker.password
+      rp_token:
+        null: true
+      rp_token_created_at:
+        null: true
+
+  customer_address_entity:
+    primary_key: "entity_id"
+    columns:
+      firstname:
+        type: faker.firstname
+      lastname:
+        type: faker.lastname
+      company:
+        type: faker.company
+      street:
+        type: faker.streetaddress
+      city:
+        type: faker.city
+      postcode:
+        type: faker.postcode
+      telephone:
+        type: faker.phonenumber
+      fax:
+        type: faker.phonenumber
+
+  # Order data
+  sales_order:
+    primary_key: "entity_id"
+    columns:
+      customer_email:
+        type: faker.email
+      customer_firstname:
+        type: faker.firstname
+      customer_lastname:
+        type: faker.lastname
+      remote_ip:
+        type: faker.ipv4
+      x_forwarded_for:
+        type: faker.ipv4
+
+  sales_order_address:
+    primary_key: "entity_id"
+    columns:
+      firstname:
+        type: faker.firstname
+      lastname:
+        type: faker.lastname
+      company:
+        type: faker.company
+      street:
+        type: faker.streetaddress
+      city:
+        type: faker.city
+      postcode:
+        type: faker.postcode
+      telephone:
+        type: faker.phonenumber
+      fax:
+        type: faker.phonenumber
+      email:
+        type: faker.email
+
+  sales_order_payment:
+    primary_key: "entity_id"
+    columns:
+      cc_last_4:
+        value: "0000"
+      cc_owner:
+        null: true
+      cc_exp_month:
+        null: true
+      cc_exp_year:
+        null: true
+      cc_ss_start_month:
+        null: true
+      cc_ss_start_year:
+        null: true
+
+  # Quote data
+  quote:
+    primary_key: "entity_id"
+    columns:
+      customer_email:
+        type: faker.email
+      customer_firstname:
+        type: faker.firstname
+      customer_lastname:
+        type: faker.lastname
+      customer_note:
+        type: faker.sentence
+
+  quote_address:
+    primary_key: "address_id"
+    columns:
+      firstname:
+        type: faker.firstname
+      lastname:
+        type: faker.lastname
+      company:
+        type: faker.company
+      street:
+        type: faker.streetaddress
+      city:
+        type: faker.city
+      postcode:
+        type: faker.postcode
+      telephone:
+        type: faker.phonenumber
+      fax:
+        type: faker.phonenumber
+      email:
+        type: faker.email
+
+  # Newsletter subscribers
+  newsletter_subscriber:
+    primary_key: "subscriber_id"
+    columns:
+      subscriber_email:
+        type: faker.email
+      subscriber_status:
+        value: 3  # Unsubscribed
+
+  # Admin users (using SQL expression for predictable emails)
+  admin_user:
+    primary_key: "user_id"
+    columns:
+      firstname:
+        type: faker.firstname
+      lastname:
+        type: faker.lastname
+      email:
+        expr: "CONCAT('admin', user_id, '@example.com')"
+      username:
+        expr: "CONCAT('admin', user_id)"
+      password:
+        value: "$2y$10$xNbXnG9UBp0vNYfJdpwj0.UpxJ.XMJ/cP3ScU9OGRmGv2GUjQxPke"  # "password123" hashed
+
+  # Company data (B2B)
+  company:
+    primary_key: "entity_id"
+    columns:
+      company_name:
+        type: faker.company
+      company_email:
+        type: faker.email
+      legal_name:
+        type: faker.company
+      vat_tax_id:
+        type: faker.numerify
+      reseller_id:
+        type: faker.numerify
+
+  # Sales order grid
+  sales_order_grid:
+    primary_key: "entity_id"
+    columns:
+      shipping_name:
+        type: faker.name
+      billing_name:
+        type: faker.name
+
+  # Negotiable quote
+  negotiable_quote:
+    primary_key: "quote_id"
+    columns:
+      quote_name:
+        type: faker.sentence
+
+  # Negotiable quote comment
+  negotiable_quote_comment:
+    primary_key: "quote_id"
+    columns:
+      comment:
+        type: faker.paragraph
+
+  # Gift registry
+  magento_giftregistry_entity:
+    primary_key: "entity_id"
+    columns:
+      title:
+        expr: "CONCAT('Registry ', entity_id)"
+      message:
+        value: "This is a gift registry"
+      shipping_address:
+        null: true
+
+  # Wish list
+  wishlist_item:
+    primary_key: "wishlist_item_id"
+    columns:
+      description:
+        value: "Wish list item"
+
+  # Product reviews
+  review_detail:
+    primary_key: "detail_id"
+    columns:
+      nickname:
+        type: faker.username
+      title:
+        value: "Product Review"
+      detail:
+        value: "This is an anonymized product review."
+
+  # Custom options
+  catalog_product_option_type_value:
+    primary_key: "option_type_id"
+    where: "title LIKE '%custom%'"
+    columns:
+      title:
+        value: "Custom option"
+
+  # Credit memo comments
+  sales_creditmemo_comment:
+    primary_key: "entity_id"
+    columns:
+      comment:
+        value: "Credit memo comment"
+
+  # Invoice comments
+  sales_invoice_comment:
+    primary_key: "entity_id"
+    columns:
+      comment:
+        value: "Invoice comment"
+
+  # Order comments
+  sales_order_status_history:
+    primary_key: "entity_id"
+    columns:
+      comment:
+        value: "Order status comment"

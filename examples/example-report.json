@@ -1,0 +1,227 @@
+{
+  "execution": {
+    "mode": "dry-run",
+    "start_time": "2023-07-06T13:40:00Z",
+    "end_time": "2023-07-06T13:45:12Z",
+    "duration_seconds": 312
+  },
+  "summary": {
+    "total_tables": 12,
+    "total_fields": 42,
+    "total_rows_scanned": 478123,
+    "total_rows_affected": 320456
+  },
+  "tables": [
+    {
+      "name": "customer_entity",
+      "rows_scanned": 105000,
+      "rows_affected": 105000,
+      "fields": [
+        {
+          "name": "email",
+          "strategy": "faker.email",
+          "rows_affected": 105000
+        },
+        {
+          "name": "firstname",
+          "strategy": "faker.firstname",
+          "rows_affected": 105000
+        },
+        {
+          "name": "lastname",
+          "strategy": "faker.lastname",
+          "rows_affected": 105000
+        }
+      ]
+    },
+    {
+      "name": "customer_address_entity",
+      "rows_scanned": 87500,
+      "rows_affected": 87500,
+      "fields": [
+        {
+          "name": "firstname",
+          "strategy": "faker.firstname",
+          "rows_affected": 87500
+        },
+        {
+          "name": "lastname",
+          "strategy": "faker.lastname",
+          "rows_affected": 87500
+        },
+        {
+          "name": "street",
+          "strategy": "faker.address",
+          "rows_affected": 87500
+        },
+        {
+          "name": "city",
+          "strategy": "faker.city",
+          "rows_affected": 87500
+        },
+        {
+          "name": "postcode",
+          "strategy": "faker.zipcode",
+          "rows_affected": 87500
+        },
+        {
+          "name": "telephone",
+          "strategy": "faker.phone",
+          "rows_affected": 87500
+        },
+        {
+          "name": "company",
+          "strategy": "faker.company",
+          "rows_affected": 87500
+        }
+      ]
+    },
+    {
+      "name": "sales_order",
+      "rows_scanned": 75000,
+      "rows_affected": 75000,
+      "fields": [
+        {
+          "name": "customer_email",
+          "strategy": "faker.email",
+          "rows_affected": 75000
+        },
+        {
+          "name": "customer_firstname",
+          "strategy": "faker.firstname",
+          "rows_affected": 75000
+        },
+        {
+          "name": "customer_lastname",
+          "strategy": "faker.lastname",
+          "rows_affected": 75000
+        },
+        {
+          "name": "shipping_address",
+          "strategy": "null",
+          "rows_affected": 75000
+        },
+        {
+          "name": "billing_address",
+          "strategy": "null",
+          "rows_affected": 75000
+        },
+        {
+          "name": "remote_ip",
+          "strategy": "faker.ipv4",
+          "rows_affected": 75000
+        }
+      ]
+    },
+    {
+      "name": "sales_order_address",
+      "rows_scanned": 150000,
+      "rows_affected": 150000,
+      "fields": [
+        {
+          "name": "firstname",
+          "strategy": "faker.firstname",
+          "rows_affected": 150000
+        },
+        {
+          "name": "lastname",
+          "strategy": "faker.lastname",
+          "rows_affected": 150000
+        },
+        {
+          "name": "street",
+          "strategy": "faker.address",
+          "rows_affected": 150000
+        },
+        {
+          "name": "city",
+          "strategy": "faker.city",
+          "rows_affected": 150000
+        },
+        {
+          "name": "postcode",
+          "strategy": "faker.zipcode",
+          "rows_affected": 150000
+        },
+        {
+          "name": "telephone",
+          "strategy": "faker.phone",
+          "rows_affected": 150000
+        },
+        {
+          "name": "company",
+          "strategy": "faker.company",
+          "rows_affected": 150000
+        },
+        {
+          "name": "vat_id",
+          "strategy": "null",
+          "rows_affected": 150000
+        }
+      ]
+    },
+    {
+      "name": "sales_order_payment",
+      "rows_scanned": 75000,
+      "rows_affected": 75000,
+      "fields": [
+        {
+          "name": "cc_last_4",
+          "strategy": "fixed",
+          "rows_affected": 75000
+        },
+        {
+          "name": "cc_owner",
+          "strategy": "null",
+          "rows_affected": 75000
+        },
+        {
+          "name": "cc_exp_month",
+          "strategy": "null",
+          "rows_affected": 75000
+        },
+        {
+          "name": "cc_exp_year",
+          "strategy": "null",
+          "rows_affected": 75000
+        }
+      ]
+    },
+    {
+      "name": "admin_user",
+      "rows_scanned": 25,
+      "rows_affected": 25,
+      "fields": [
+        {
+          "name": "firstname",
+          "strategy": "faker.firstname",
+          "rows_affected": 25
+        },
+        {
+          "name": "lastname",
+          "strategy": "faker.lastname",
+          "rows_affected": 25
+        },
+        {
+          "name": "email",
+          "strategy": "expr",
+          "rows_affected": 25
+        },
+        {
+          "name": "username",
+          "strategy": "expr",
+          "rows_affected": 25
+        },
+        {
+          "name": "password",
+          "strategy": "fixed",
+          "rows_affected": 25
+        }
+      ]
+    }
+  ],
+  "errors": {
+    "count": 2,
+    "log_file": "logs/errors.txt"
+  }
+}

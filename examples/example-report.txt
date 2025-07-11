@@ -1,0 +1,57 @@
+=== Anonymization Report ===
+Mode: dry-run
+Start Time: 2023-07-06T13:40:00Z
+End Time: 2023-07-06T13:45:12Z
+Duration: 312 seconds
+
+=== Summary ===
+Total Tables: 12
+Total Fields: 42
+Total Rows Scanned: 478123
+Total Rows Affected: 320456
+
+=== Tables ===
+Table               | Field              | Strategy          | Rows Affected
+--------------------+--------------------+-------------------+--------------
+customer_entity     | email              | faker.email       | 105000
+                    | firstname          | faker.firstname   | 105000
+                    | lastname           | faker.lastname    | 105000
+                    |                    |                   | 
+customer_address_entity | firstname      | faker.firstname   | 87500
+                    | lastname           | faker.lastname    | 87500
+                    | street             | faker.address     | 87500
+                    | city               | faker.city        | 87500
+                    | postcode           | faker.zipcode     | 87500
+                    | telephone          | faker.phone       | 87500
+                    | company            | faker.company     | 87500
+                    |                    |                   | 
+sales_order         | customer_email     | faker.email       | 75000
+                    | customer_firstname | faker.firstname   | 75000
+                    | customer_lastname  | faker.lastname    | 75000
+                    | shipping_address   | null              | 75000
+                    | billing_address    | null              | 75000
+                    | remote_ip          | faker.ipv4        | 75000
+                    |                    |                   | 
+sales_order_address | firstname          | faker.firstname   | 150000
+                    | lastname           | faker.lastname    | 150000
+                    | street             | faker.address     | 150000
+                    | city               | faker.city        | 150000
+                    | postcode           | faker.zipcode     | 150000
+                    | telephone          | faker.phone       | 150000
+                    | company            | faker.company     | 150000
+                    | vat_id             | null              | 150000
+                    |                    |                   | 
+sales_order_payment | cc_last_4          | fixed             | 75000
+                    | cc_owner           | null              | 75000
+                    | cc_exp_month       | null              | 75000
+                    | cc_exp_year        | null              | 75000
+                    |                    |                   | 
+admin_user          | firstname          | faker.firstname   | 25
+                    | lastname           | faker.lastname    | 25
+                    | email              | expr              | 25
+                    | username           | expr              | 25
+                    | password           | fixed             | 25
+
+=== Errors ===
+Error Count: 2
+Error Log: logs/errors.txt

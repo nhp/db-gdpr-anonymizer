@@ -1,0 +1,25 @@
+[2023-07-06T13:42:15Z] error: Failed to anonymize field
+  table: sales_order_grid
+  field: shipping_name
+  error: Column 'shipping_name' does not exist in table 'sales_order_grid'
+  strategy: faker.name
+
+[2023-07-06T13:43:22Z] error: SQL execution failed
+  table: customer_entity
+  field: email
+  error: Duplicate entry 'john.doe@example.com' for key 'customer_entity.EMAIL_CUSTOMER_ENTITY'
+  strategy: faker.email
+  sql: UPDATE customer_entity SET email = 'john.doe@example.com' WHERE entity_id = 12345
+
+[2023-07-06T13:44:05Z] error: Failed to get primary key
+  table: catalog_product_option_type_price
+  error: No primary key found for table catalog_product_option_type_price
+
+[2023-07-06T13:44:37Z] error: Database connection lost
+  error: Lost connection to MySQL server during query
+  operation: Execute anonymization plan
+  retrying: true
+
+[2023-07-06T13:44:58Z] error: Database connection reestablished
+  operation: Execute anonymization plan
+  duration: 21s
